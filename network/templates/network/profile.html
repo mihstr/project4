@@ -1,0 +1,49 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div class="profile-header mb-4">
+        <h2>{{ profile_user.username }}</h2>
+        <div class="profile-stats">
+            <span class="mr-3">Sledilci: <span id="followers-count">{{ followers_count }}</span></span>
+            <span>Sledi: {{ following_count }}</span>
+        </div>
+        
+        {% if user.is_authenticated and not is_self %}
+            <form class="follow-form" data-username="{{ profile_user.username }}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary mt-2" id="follow-button">
+                    {% if is_following %}
+                        Prenehaj slediti
+                    {% else %}
+                        Sledi
+                    {% endif %}
+                </button>
+            </form>
+        {% endif %}
+    </div>
+
+    <div class="posts">
+        {% for post in posts %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.user.username }}</h5>
+                    <p class="card-text">{{ post.content }}</p>
+                    <div class="card-text d-flex justify-content-between">
+                        <small class="text-muted">
+                            Objavljeno: {{ post.timestamp|date:"d. m. Y, H:i" }}
+                        </small>
+                        <small class="text-muted">
+                            <i class="far fa-heart"></i>
+                            <span class="likes-count">{{ post.likes.count }}</span> {{ post.likes.count|sklanjaj_vsecke }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="alert alert-info">
+                Ta uporabnik še nima objav.
+            </div>
+        {% endfor %}
+    </div>
+    {% include "network/pagination.html" %}
+{% endblock %} 

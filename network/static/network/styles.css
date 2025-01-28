@@ -1,0 +1,54 @@
+.container {
+    margin: 20px;
+}
+
+.new-post-form {
+    margin-bottom: 30px;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+    color: #007bff;
+}
+
+.text-muted {
+    font-size: 0.9rem;
+}
+
+.edit-btn {
+    font-size: 0.8rem;
+}
+
+.edit-area textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.edit-area .btn {
+    margin-right: 5px;
+}
+
+.like-btn {
+    color: #dc3545;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.like-btn:hover {
+    transform: scale(1.1);
+}
+
+.like-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.like-btn i {
+    font-size: 1rem;
+}

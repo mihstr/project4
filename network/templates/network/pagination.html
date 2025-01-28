@@ -1,0 +1,31 @@
+{% if posts.paginator.num_pages > 1 %}
+<nav aria-label="Navigacija po straneh" class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if posts.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ posts.previous_page_number }}">Prejšnja</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Prejšnja</span>
+            </li>
+        {% endif %}
+
+        <li class="page-item disabled">
+            <span class="page-link">
+                Stran {{ posts.number }} od {{ posts.paginator.num_pages }}
+            </span>
+        </li>
+
+        {% if posts.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ posts.next_page_number }}">Naslednja</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Naslednja</span>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %} 
